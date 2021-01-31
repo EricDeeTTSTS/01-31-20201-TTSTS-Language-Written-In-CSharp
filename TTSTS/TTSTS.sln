@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessTree", "AccessTree\Ac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackAccessClasses", "StackAccessClasses\StackAccessClasses.csproj", "{97D23E77-318D-4A8E-A306-93A69EA371AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "No-AccessClasses", "No-AccessClasses\No-AccessClasses.csproj", "{68695F0B-281F-4110-95D1-0696A6349879}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{97D23E77-318D-4A8E-A306-93A69EA371AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97D23E77-318D-4A8E-A306-93A69EA371AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97D23E77-318D-4A8E-A306-93A69EA371AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68695F0B-281F-4110-95D1-0696A6349879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68695F0B-281F-4110-95D1-0696A6349879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68695F0B-281F-4110-95D1-0696A6349879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68695F0B-281F-4110-95D1-0696A6349879}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

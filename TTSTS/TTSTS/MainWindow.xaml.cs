@@ -8,39 +8,23 @@
 
 namespace TTSTS
 {
-    using System.Collections.Generic;
     using System.Windows;
     using AccessTree.Interfaces;
-    using HeapAccessClasses;
-    using StackAccessClasses;
+    using No_AccessClasses;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml.
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int inputIndex;
-
-        private string inputFromHistory;
-
-        private UserInputContents contents;
-
-        private IContainer inputReference;
-
-        private IVolatile inputBackEnd;
+        private IHeapAccessor contents;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow"/> class.
         /// </summary>
         public MainWindow()
         {
-            this.contents = new UserInputContents();
-
-            this.inputIndex = 0;
-
-            this.inputReference = new UserInputContents();
-
-            this.inputBackEnd = new UserInputHost();
+            this.contents = new UserStorageDevice();
 
             this.InitializeComponent();
 
@@ -65,22 +49,6 @@ namespace TTSTS
 #endif
         }
 
-        /// <summary>
-        /// Gets.
-        /// </summary>
-        public string GetInputFromHistory
-        {
-            get => this.inputFromHistory;
-        }
-
-        /// <summary>
-        /// Sets.
-        /// </summary>
-        public string SetInputFromHistory
-        {
-            set => this.inputFromHistory = value;
-        }
-
         private void FindRequest_Click(object sender, RoutedEventArgs e)
         {
             this.CallInputs_thenSetReference();
@@ -97,26 +65,7 @@ namespace TTSTS
             /// As an interface, IContainer will operate on the main class, but not actually rely on it as a stack copy. It receives arguments from the stack, which is slightly more organized.
             /// </summary>
 
-            this.SetEventAndIncrement();
-        }
-
-        /// <summary>
-        /// Allows for asynchronization via layering of Lists/arrays.
-        /// </summary>
-        private void SetEventAndIncrement()
-        {
-            this.contents.UserInputAndEventContainer[this.inputIndex].Add("Initialize");
-            this.contents.UserInputAndEventContainer[this.inputIndex].Add(this.inputReference.StartStorageEvent(this.ReturnPublicTextBoxOne(), this.inputIndex, this.contents.UserInputAndEventContainer[(int)this.inputIndex], this.inputBackEnd));
-            this.contents.TrackOfEvents.Add(this.inputIndex, this.contents.UserInputAndEventContainer[(int)this.inputIndex]);
-            this.inputIndex++;
-            this.contents.UserInputAndEventContainer.Add(new List<string>());
-        }
-
-        private List<string> ReturnPublicTextBoxOne()
-        {
-            List<string> registerStrings = new List<string>();
-            registerStrings.Add(this.PublicTextBoxOne.Text);
-            return registerStrings;
+            this.contents.SetEventAndIncrement(this.contents, this.PublicTextBoxOne.Text);
         }
     }
 }

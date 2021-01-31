@@ -12,49 +12,6 @@ namespace AccessTree.AbstractAccessClasses
     /// </summary>
     public abstract class AbstractUserInputHost
     {
-        private Dictionary<int, List<string>> trackOfEvents;
-        private List<List<string>> userInputAndEventContainer;
-        private List<List<byte>> heapASCIICommands;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AbstractUserInputHost"/> class.
-        /// Constructs input base class and instantiates a List to contain multiple inputs.
-        /// </summary>
-        public AbstractUserInputHost()
-        {
-            this.trackOfEvents = new Dictionary<int, List<string>>();
-            this.userInputAndEventContainer = new List<List<string>>();
-            this.userInputAndEventContainer.Add(new List<string>());
-            this.heapASCIICommands = new List<List<byte>>();
-        }
-
-        /// <summary>
-        /// Gets or sets.
-        /// </summary>
-        public Dictionary<int, List<string>> TrackOfEvents
-        {
-            get => this.trackOfEvents;
-            set => this.trackOfEvents = value;
-        }
-
-        /// <summary>
-        /// Gets or sets.
-        /// </summary>
-        public List<List<string>> UserInputAndEventContainer
-        {
-            get => this.userInputAndEventContainer;
-            set => this.userInputAndEventContainer = value;
-        }
-
-        /// <summary>
-        /// Gets or sets.
-        /// </summary>
-        public List<List<byte>> HeapASCIICommands
-        {
-            get => this.heapASCIICommands;
-            set => this.heapASCIICommands = value;
-        }
-
         /// <summary>
         /// This method should allow the programmer to operate on the "main heap" variables from the stack; allowing for greater optimization.
         /// </summary>
@@ -62,8 +19,9 @@ namespace AccessTree.AbstractAccessClasses
         /// <param name="index">The index needed for placement of the string.</param>
         /// <param name="userInputContainer">The container or list to place the string into.</param>
         /// <param name="inputBackEnd">The method class holding the operations to use.</param>
+        /// <param name="heapASCIICommands">The resulting ASCII or decimal list.</param>
         /// <returns>Event success or failure message.</returns>
-        public string StartStorageEvent(List<string> variable, int index, List<string> userInputContainer, IVolatile inputBackEnd)
+        public string StartStorageEvent(List<string> variable, int index, List<string> userInputContainer, IVolatile inputBackEnd, List<List<byte>> heapASCIICommands)
         {
             /// <summary>
             /// Stack control/obfuscation.
@@ -98,7 +56,13 @@ namespace AccessTree.AbstractAccessClasses
                 }
             }
 
-            this.HeapASCIICommands = inputBackEnd.ConvertStringsToASCIIList(variable);
+            List<List<byte>> registerASCIICommands = inputBackEnd.ConvertStringsToASCIIList(variable);
+
+            foreach (List<byte> list in registerASCIICommands)
+            {
+                heapASCIICommands.Add(list);
+            }
+
             return eventHandled;
         }
 
@@ -128,7 +92,7 @@ namespace AccessTree.AbstractAccessClasses
             return registerASCIICommandsList;
         }
 
-        /// Make list, then scan backwards until slash
-        /// Argument of speed vs validation
+        // Make list, then scan backwards until slash
+        // Argument of speed vs validation
     }
 }

@@ -20,6 +20,7 @@
 <ItemGroup>
   <ProjectReference Include="..\AccessTree\AccessTree.csproj" />
   <ProjectReference Include="..\HeapAccessClasses\HeapAccessClasses.csproj" />
+  <ProjectReference Include="..\No-AccessClasses\No-AccessClasses.csproj" />
   <ProjectReference Include="..\StackAccessClasses\StackAccessClasses.csproj" />
 </ItemGroup>
 
