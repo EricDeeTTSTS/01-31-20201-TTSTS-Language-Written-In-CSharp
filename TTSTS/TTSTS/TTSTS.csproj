@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+<ItemGroup>
+  <AdditionalFiles Include="stylecop.json" />
+</ItemGroup>
+
+<ItemGroup>
+  <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+    <PrivateAssets>all</PrivateAssets>
+    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+  </PackageReference>
+</ItemGroup>
+
+<ItemGroup>
+  <ProjectReference Include="..\AccessTree\AccessTree.csproj" />
+  <ProjectReference Include="..\HeapAccessClasses\HeapAccessClasses.csproj" />
+  <ProjectReference Include="..\StackAccessClasses\StackAccessClasses.csproj" />
+</ItemGroup>
+
+</Project>

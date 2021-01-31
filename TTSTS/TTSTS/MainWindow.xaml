@@ -1,0 +1,14 @@
+﻿<Window x:Class="TTSTS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TTSTS"
+        mc:Ignorable="d"
+        Title="TTSTS Language" Height="600" Width="900" SizeToContent="Manual" Left="0" Top="0">
+    <Grid Height="600" Width="900">
+        <Label Content="Enter the URL:" HorizontalAlignment="Left" Margin="30,60" VerticalAlignment="Top"/>
+        <TextBox x:Name="PublicTextBoxOne" HorizontalAlignment="Left" Margin="90,90" Text="https://example.com/tored" TextWrapping="Wrap" VerticalAlignment="Top" Width="720" Height="90"/>
+        <Button Content="Find request" HorizontalAlignment="Left" Margin="720, 360, 0, 0" VerticalAlignment="Top" Click="FindRequest_Click"/>
+    </Grid>
+</Window>
